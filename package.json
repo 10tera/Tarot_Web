@@ -1,0 +1,40 @@
+{
+  "name": "tarot_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "dev": "webpack-dev-server --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10tera/Tarot_Web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/10tera/Tarot_Web/issues"
+  },
+  "homepage": "https://github.com/10tera/Tarot_Web#readme",
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.5",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-router-dom": "^5.3.3",
+    "html-webpack-plugin": "^5.5.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  }
+}
