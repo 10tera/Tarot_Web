@@ -19,7 +19,7 @@ module.exports = {
     },
     target: "web",
     resolve: {
-        extensions: [".ts",".js",".tsx",".jsx"],
+        extensions: [".ts",".js",".tsx",".jsx",".json"],
     },
     plugins: [
         new HtmlWebpackPlugin({
