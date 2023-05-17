@@ -4,6 +4,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
@@ -11,6 +12,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname,"docs/"),
         filename: "[name].js",
+        clean: true
+        
     },
     module: {
         rules: [{
@@ -27,9 +30,17 @@ module.exports = {
             filename: "index.html",
             publicPath: "./"
         }),
+        new CopyWebpackPlugin({
+            patterns:[
+                {from:"public",to:"public",globOptions:{
+                    ignore: ["**/index.html"]
+                }}
+            ]
+        }),
     ],
     devServer: {
         historyApiFallback: true,
+        
     },
     watch: true
 }

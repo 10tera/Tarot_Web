@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 /** @jsx jsx */
 import { css } from "@emotion/react";
-import React,{useState,useMemo} from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { ModeSelect } from "../molecules/ModeSelect";
+import { SettingContext } from "../../context/SettingContext";
 
 const LinkCss = css({
     margin: "10px 0 10px 50px"
@@ -17,8 +18,10 @@ const TitleCss = css({
 });
 
 export const TopPage = () => {
-    const [mode,setMode] = useState("default");
-    const memoizedMode = useMemo(() => mode,[mode]);
+    const settingContext = useContext(SettingContext);
+    const setMode = (mode:string) => {
+        settingContext?.setMode(mode);
+    }
     return(
         <React.Fragment>
             <div css={TitleCss}>
@@ -26,12 +29,12 @@ export const TopPage = () => {
             </div>
             <section>
                 <ModeSelect setSelectedMode={setMode}></ModeSelect>
-                {mode}
+                {settingContext?.mode}
             </section>
             <section>
                 <ul css={LinkWrapCss}>
                     <li css={LinkCss}>
-                        <Link to={`/one?card=1`}>1枚引き</Link>
+                        <Link to={`/one`}>1枚引き</Link>
                     </li>
                     <li css={LinkCss}>
                         <Link to={"/two"}>2枚引き</Link>
