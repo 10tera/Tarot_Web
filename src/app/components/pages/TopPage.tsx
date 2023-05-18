@@ -25,11 +25,10 @@ export const TopPage = () => {
     return(
         <React.Fragment>
             <div css={TitleCss}>
-                <h1>タロット占いツール</h1>
+                <h1>猫丸タロット占いツールver.1</h1>
             </div>
             <section>
                 <ModeSelect setSelectedMode={setMode}></ModeSelect>
-                {settingContext?.mode}
             </section>
             <section>
                 <ul css={LinkWrapCss}>
@@ -43,13 +42,13 @@ export const TopPage = () => {
                         <Link to={"/third"}>3枚引き</Link>
                     </li>
                     <li css={LinkCss}>
-                        <Link to={"/five"}>5枚引き</Link>
+                        <Link to={"/five"}>5枚引き(ギリシャ十字)</Link>
                     </li>
                     <li css={LinkCss}>
-                        <Link to={"/six"}>6枚引き</Link>
+                        <Link to={"/six"}>6枚引き(ピラミッド)</Link>
                     </li>
                     <li css={LinkCss}>
-                        <Link to={"/ten"}>10枚引き</Link>
+                        <Link to={"/ten"}>10枚引き(ケルト十字)</Link>
                     </li>
                     
                 </ul>

@@ -4,7 +4,9 @@ import { css } from "@emotion/react";
 import React, { useContext, useEffect, useState } from "react";
 import { SettingContext } from "../../context/SettingContext";
 import { Card } from "../molecules/Card";
+import { BackButton } from "../molecules/BackButton";
 import Config from "../../../../public/config.json";
+import { OpenNewWindow } from "../molecules/OpenNewWindow";
 
 const TitleCss = css({
     textAlign: "center"
@@ -52,7 +54,7 @@ export const One = () => {
             const result = [];
             for (let i = 0; i < 1; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ "path": array[rand][0], info: array[rand][1] });
+                result.push({ path: array[rand][0],infoTitle: array[rand][1], info: array[rand][2] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -65,7 +67,7 @@ export const One = () => {
             const result = [];
             for (let i = 0; i < 1; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ "path": array[rand][0], info: array[rand][1] });
+                result.push({ path: array[rand][0], infoTitle: array[rand][1], info: array[rand][2] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -81,13 +83,15 @@ export const One = () => {
             <section css={{ height: "auto" }}>
                 <ul css={cardsUlCss}>
                     {
-                        paths.map((p) => {
+                        paths.map((p,pi) => {
                             return (
-                                <li key={"li-" + p["path"]} css={cardLiCss}><Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} info={p["info"]} /></li>
+                                <li key={"li-" + p["path"]} css={cardLiCss}><Card infoTitle={p["infoTitle"]} mode={settingContext?.mode ? settingContext.mode : "SUN"} title={`${(pi+1).toString()}枚目`} path={p["path"]} info={p["info"]} /></li>
                             )
                         })
                     }
                 </ul>
+                <BackButton/>
+                <OpenNewWindow path={`${window.location.pathname}`}/>
             </section>
         </React.Fragment>
     )

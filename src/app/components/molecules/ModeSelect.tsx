@@ -21,9 +21,21 @@ export const ModeSelect = ({setSelectedMode}: Props) => {
                 break;
         }
     };
+    let defaultValue = "猫丸タロットカード「SUN」";
+    switch (settingContext?.mode) {
+        case "SUN":
+            defaultValue = "猫丸タロットカード「SUN」"
+            break;
+        case "MOON":
+            defaultValue = "猫丸タロットカード「MOON」";
+            break;
+        default:
+            defaultValue = "猫丸タロットカード「SUN」";
+            break;
+    }
 
     return(
-        <select onChange={handleSelectChange} defaultValue={settingContext?.mode}>
+        <select onChange={handleSelectChange} defaultValue={defaultValue}>
             {
                 Config.mode.map((value,_value_i) => {
                     return(<option key={value}>{value}</option>)

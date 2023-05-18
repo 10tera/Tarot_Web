@@ -5,6 +5,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { SettingContext } from "../../context/SettingContext";
 import { Card } from "../molecules/Card";
 import Config from "../../../../public/config.json";
+import { BackButton } from "../molecules/BackButton";
+import { OpenNewWindow } from "../molecules/OpenNewWindow";
 
 const TitleCss = css({
     textAlign: "center"
@@ -33,6 +35,19 @@ const cardsUlCss = css({
     alignItems: "center",
 });
 
+const titles = [
+    "1枚目：現在の状態",
+    "2枚目：障害や援助",
+    "3枚目：顕在意識",
+    "4枚目：潜在意識",
+    "5枚目：過去",
+    "6枚目：未来",
+    "7枚目：自分自身の心理、立場",
+    "8枚目：周囲や環境",
+    "9枚目：願望や恐れ",
+    "10枚目：最終結果"
+];
+
 export const Ten = () => {
     const settingContext = useContext(SettingContext);
     const [isFirstRender, setIsFirstRender] = useState(true);
@@ -52,7 +67,7 @@ export const Ten = () => {
             const result = [];
             for (let i = 0; i < 10; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ "path": array[rand][0], info: array[rand][1] });
+                result.push({ path: array[rand][0], infoTitle: array[rand][1], info: array[rand][2] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -65,7 +80,7 @@ export const Ten = () => {
             const result = [];
             for (let i = 0; i < 10; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ "path": array[rand][0], info: array[rand][1] });
+                result.push({ path: array[rand][0], infoTitle: array[rand][1], info: array[rand][2] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -75,19 +90,21 @@ export const Ten = () => {
         <React.Fragment>
             <section>
                 <div>
-                    <h1 css={TitleCss}>10枚引き</h1>
+                    <h1 css={TitleCss}>10枚引き(ケルト十字)</h1>
                 </div>
             </section>
             <section css={{ height: "auto" }}>
                 <ul css={cardsUlCss}>
                     {
-                        paths.map((p) => {
+                        paths.map((p,pi) => {
                             return (
-                                <li key={"li-" + p["path"]} css={cardLiCss}><Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} info={p["info"]} /></li>
+                                <li key={"li-" + p["path"]} css={cardLiCss}><Card infoTitle={p["infoTitle"]} mode={settingContext?.mode ? settingContext.mode : "SUN"} title={titles[pi]} path={p["path"]} info={p["info"]} /></li>
                             )
                         })
                     }
                 </ul>
+                <BackButton/>
+                <OpenNewWindow path={`${window.location.pathname}`} />
             </section>
         </React.Fragment>
     )
