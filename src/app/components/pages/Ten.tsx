@@ -13,19 +13,24 @@ const TitleCss = css({
 const cardLiCss = css({
     listStyle: "none",
     width: "31%",
+    minWidth: "140px",
     margin: "3.5% 0 0 0",
     display: "list-item",
     //position: "relative",
 });
 
 const cardsUlCss = css({
-    paddingLeft: "0",
-    height: "100%",
+    paddingTop: "10px",
+    paddingLeft: "10px",
+    height: "auto",
     display: "flex",
-    //width: "50%",
+    width: "70%",
     maxWidth: "600px",
+    //maxHeight: "600px",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    margin: "0 auto 2em",
+    alignItems: "center",
 });
 
 export const Ten = () => {
@@ -73,7 +78,7 @@ export const Ten = () => {
                     <h1 css={TitleCss}>10枚引き</h1>
                 </div>
             </section>
-            <section css={{ height: "800px" }}>
+            <section css={{ height: "auto" }}>
                 <ul css={cardsUlCss}>
                     {
                         paths.map((p) => {

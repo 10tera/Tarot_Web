@@ -9,7 +9,17 @@ type Props = {
 export const ModeSelect = ({setSelectedMode}: Props) => {
     const settingContext = useContext(SettingContext);
     const handleSelectChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
-        setSelectedMode(event.target.value);
+        switch (event.target.value) {
+            case "猫丸タロットカード「SUN」":
+                setSelectedMode("SUN");
+                break;
+            case "猫丸タロットカード「MOON」":
+                setSelectedMode("MOON");
+                break;
+            default:
+                setSelectedMode("SUN");
+                break;
+        }
     };
 
     return(

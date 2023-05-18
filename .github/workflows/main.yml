@@ -1,0 +1,61 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      contents: read
+      id-token: write
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      
+      - name: filter folder changes
+        id: changes
+        uses: dorny/paths-filter@v2
+        with:
+          token: ${{secrets.MY_GITHUB_TOKEN}}
+          filters: |
+            docs: 
+              - "docs/**"
+              - "public/**"
+      
+      - name: upload to github pages
+        id: upload
+        if: steps.changes.outputs.docs == 'true'
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    permissions:
+       pages: write
+       id-token: write
+       contents: read
+    environment:
+       name: github-pages
+       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: filter
+        id: changes
+        uses: dorny/paths-filter@v2
+        with:
+          token: ${{secrets.MY_GITHUB_TOKEN}}
+          filters: |
+            docs: 
+              - "docs/**"
+              - "public/**"
+      - name: Deploy to GitHub Pages
+        if: steps.changes.outputs.docs == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v1

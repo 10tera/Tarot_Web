@@ -10,7 +10,7 @@ type Props = {
 }
 
 const CardCss = css({
-    width: "100%",
+    width: "90%",
     height: "276.83px",
     //height: "max-content",
     cursor: "pointer",
@@ -29,7 +29,8 @@ const activeFrontCss = css({
     top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
-    transform: "rotateY(0)", display: "block"
+    transform: "rotateY(0)",
+    display: "block"
 });
 
 const defaultFrontCss = css({
@@ -40,7 +41,8 @@ const defaultFrontCss = css({
     top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
-    transform: "rotateY(-180deg)", display: "block"
+    transform: "rotateY(-180deg)",
+    display: "block"
 });
 
 const activeBackCss = css({
@@ -62,11 +64,19 @@ const defaultBackCss = css({
     left: "0",
     top: "0",
     backfaceVisibility: "hidden",
-    transition: "all 0.6s", display: "block"
+    transition: "all 0.6s",
+    display: "block"
 });
 
-const infoCss = css({
-    overflowWrap: "break-word"
+const activeInfoCss = css({
+    overflowWrap: "break-word",
+    transition: "all 0.6s",
+});
+
+const defaultInfoCss = css({
+    overflowWrap: "break-word",
+    opacity: "0",
+    transition: "all 0.6s",
 });
 
 export const Card = ({info,path,mode}: Props) => {
@@ -97,7 +107,7 @@ export const Card = ({info,path,mode}: Props) => {
                     <img src={`./public/img/card/${mode}/back.png`} css={{ width: "100%", height: "auto" }}></img>
                 </div>
             </div>
-            <p css={infoCss}>意味：{info}</p>
+            <p css={isClick ? activeInfoCss : defaultInfoCss}>意味：{info}</p>
         </React.Fragment>
     )
 }
