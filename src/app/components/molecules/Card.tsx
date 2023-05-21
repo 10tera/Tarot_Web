@@ -147,7 +147,9 @@ export const Card = ({path,mode,info,isShowInfo,infoTitle}: Props) => {
             {
                 isShowInfo ? <div>
                     <p css={isClick ? activePCss : defaultPCss}>{info}</p>
-                    <Link css={isClick ? activeLinkCss : defaulLinkCss} to={`/info/${mode}?path=${path}`}>【絵柄に含まれている主な要素】（該当ページへリンク）</Link>
+                    <br/>
+                    <Link css={isClick ? activeLinkCss : defaulLinkCss} to={`/info/${mode}?path=${path}`}>【絵柄に含まれている主な要素】</Link>
+                    <br/>
                 </div>
                  : null
             }

@@ -38,13 +38,16 @@ const cardsUlCss = css({
 });
 
 const buttonsCss = css({
-    textAlign: "center",
-    width: "100%"
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    padding: "5px"
 });
 
 const viewCss = css({
     margin: "0 auto",
-    width: "50%"
+    width: "90%",
+    maxWidth: "600px"
 });
 
 const viewImgCss = css({
@@ -123,9 +126,20 @@ export const Five = () => {
                         })
                     }
                 </ul>
+                <br />
                 <div css={buttonsCss}>
-                    <BackButton />
-                    <OpenNewWindow path={`${window.location.pathname}`} />
+                    <div css={css({
+                        width: "200px",
+                        textAlign: "center"
+                    })}>
+                        <BackButton />
+                    </div>
+                    <div css={css({
+                        width: "200px",
+                        textAlign: "center"
+                    })}>
+                        <OpenNewWindow path={`${window.location.pathname}`} />
+                    </div>
                 </div>
             </section>
         </React.Fragment>
