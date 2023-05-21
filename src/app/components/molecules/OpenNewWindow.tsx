@@ -1,8 +1,16 @@
+/** @jsxImportSource @emotion/react */
+/** @jsx jsx */
+import { css } from "@emotion/react";
 import React from "react";
 
 type Props = {
     path:string;
 };
+
+const imgCss = css({
+    height: "auto",
+    width: "150px"
+});
 
 export const OpenNewWindow = ({path}: Props) => {
     const handleButtonClick = () => {
@@ -13,7 +21,7 @@ export const OpenNewWindow = ({path}: Props) => {
     }
     return(
         <React.Fragment>
-            <button onClick={handleButtonClick}>追加鑑定</button>
+            <img css={imgCss} src={"./public/img/newwindow.png"} onClick={handleButtonClick}></img>
         </React.Fragment>
     )
 }

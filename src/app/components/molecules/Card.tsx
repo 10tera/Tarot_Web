@@ -1,139 +1,123 @@
 /** @jsxImportSource @emotion/react */
 /** @jsx jsx */
 import { css } from "@emotion/react";
-import React,{useState,useRef,useEffect,ReactNode} from "react";
+import React,{useState,useRef,useEffect} from "react";
+import {Link} from "react-router-dom";
 
 type Props = {
-    info: string,
     path: string,
     mode: string,
-    title: string,
+    info: string,
     infoTitle: string,
+    isShowInfo: boolean,
 }
 
-type ModalProps = {
-    show:boolean,
-    setShow: React.Dispatch<React.SetStateAction<boolean>>,
-    children: ReactNode
-}
 
 const CardCss = css({
-    width: "90%",
-    height: "276.83px",
-    //height: "max-content",
+    width: "100%",
+    height: "200px",
+    //height: "276.83px",
     cursor: "pointer",
     position: "relative",
-    "::before":{
-        paddingTop: "300%",
-    }
+    display: "flex",
+    justifyContent: "center"
 });
 
 
 const activeFrontCss = css({
-    width:"100%",
-    height: "max-content",
+    width:"auto",
+    height: "100%",
     position: "absolute",
-    left: "0",
-    top: "0",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
     transform: "rotateY(0)",
-    display: "block"
 });
 
 const defaultFrontCss = css({
-    width: "100%",
-    height: "max-content",
+    width: "auto",
+    height: "100%",
     position: "absolute",
-    left: "0",
-    top: "0",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
     transform: "rotateY(-180deg)",
-    display: "block"
 });
 
 const activeBackCss = css({
-    width:"100%",
-    height: "max-content",
+    width:"auto",
+    height: "100%",
     position: "absolute",
-    left: "0",
-    top: "0",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
     transform: "rotateY(180deg)",
-    display: "block"
 });
 
 const defaultBackCss = css({
-    width: "100%",
-    height: "max-content",
+    width: "auto",
+    height: "100%",
     position: "absolute",
-    left: "0",
-    top: "0",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
     backfaceVisibility: "hidden",
     transition: "all 0.6s",
-    display: "block"
 });
 
-const pCss = css({
+const activePCss = css({
     overflowWrap: "break-word",
     transition: "all 0.6s",
-    whiteSpace: "pre-wrap"
+    whiteSpace: "pre-wrap",
+    margin : "0 auto"
 });
 
-const overlayCss = css({
-    position: "fixed",
-    top:"0",
-    left: "0",
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: "9998",
+const defaultPCss = css({
+    overflowWrap: "break-word",
+    transition: "all 0.6s",
+    whiteSpace: "pre-wrap",
+    opacity: "0",
 });
 
-const contentCss = css({
-    zIndex: "9999",
-    width: "50%",
-    padding: "1em",
-    background: "#fff",
+const activeLinkCss = css({
+    transition: "all 0.6s",
 });
 
-const Modal = ({show,setShow,children}:ModalProps) => {
-    const closeModal = () => {
-        setShow(false);
-    };
-    if(show){
-        return(
-            <div css={overlayCss} onClick={closeModal}>
-                <div css={contentCss} onClick={(e) => e.stopPropagation()}>
-                    {children}
-                    <button onClick={closeModal}>閉じる</button>
-                </div>
-            </div>
-        )
-    }
-    else{
-        return null;
-    }
-}
+const defaulLinkCss = css({
+    opacity: "0",
+    transition: "all 0.6s",
+});
 
-export const Card = ({info,path,mode,title,infoTitle}: Props) => {
+const activeH3Css = css({
+    textAlign: "center",
+    transition: "all 0.6s",
+});
+
+const defaultH3Css = css({
+    textAlign: "center",
+    transition: "all 0.6s",
+    opacity: "0",
+});
+
+
+export const Card = ({path,mode,info,isShowInfo,infoTitle}: Props) => {
     const [isClick,setIsClick] = useState(false);
-    const [isModalOpen,setIsModalOpen] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const handleCardClick = () => {
         if(!isClick){
             setIsClick(true);
             return;
         }
-        setIsModalOpen(true);
     }
 
     useEffect(() => {
+        /*
         window.addEventListener("resize",() => {
             const parent = cardRef.current;
             if (!parent) return;
@@ -141,24 +125,32 @@ export const Card = ({info,path,mode,title,infoTitle}: Props) => {
             if(!child)return;
             parent.style.height = `${child.offsetHeight}px`
         });
+        const parent = cardRef.current;
+        if (!parent) return;
+        const child = parent.querySelector("div");
+        if (!child) return;
+        parent.style.height = `${child.offsetHeight}px`
+        */
     },[]);
+    
     return(
         <React.Fragment>
-            <p>{title}</p>
-            <div css={CardCss} onClick={handleCardClick} ref={cardRef}>
-                <div className={"card-child"} css={isClick ? activeFrontCss : defaultFrontCss}>
-                    <img src={`./public/img/card/${mode}/${path}.png`} css={{width: "100%",height: "auto"}}></img>
+            <div css={CardCss} ref={cardRef}>
+                <div css={isClick ? activeFrontCss : defaultFrontCss}>
+                    <img src={`./public/img/card/${mode}/${path}.png`} css={{height: "100%",margin :"0 auto"}}></img>
                 </div>
-                <div css={isClick ? activeBackCss : defaultBackCss}>
-                    <img src={`./public/img/card/${mode}/back.png`} css={{ width: "100%", height: "auto" }}></img>
+                <div css={isClick ? activeBackCss : defaultBackCss} onClick={handleCardClick}>
+                    <img src={`./public/img/card/${mode}/back.png`} css={{ height: "100%", margin: "0 auto" }}></img>
                 </div>
             </div>
-            <div>
-                <Modal show={isModalOpen} setShow={setIsModalOpen}>
-                    <h4>{infoTitle}</h4>
-                    <p css={pCss}>{info}</p>
-                </Modal>
-            </div>
+            <h3 css={isClick ? activeH3Css : defaultH3Css}>{infoTitle}</h3>
+            {
+                isShowInfo ? <div>
+                    <p css={isClick ? activePCss : defaultPCss}>{info}</p>
+                    <Link css={isClick ? activeLinkCss : defaulLinkCss} to={`/info/${mode}?path=${path}`}>【絵柄に含まれている主な要素】（該当ページへリンク）</Link>
+                </div>
+                 : null
+            }
         </React.Fragment>
     )
 }

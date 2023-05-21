@@ -42,7 +42,29 @@ const buttonsCss = css({
     width: "100%"
 });
 
-export const Third = () => {
+const viewCss = css({
+    margin: "0 auto",
+    width: "50%"
+});
+
+const viewImgCss = css({
+    width: "100%",
+    height: "auto"
+});
+
+const titles = [
+    "1枚目：現状",
+    "2枚目：身体的な能力",
+    "3枚目：精神的な能力",
+    "4枚目：潜在能力・使命",
+    "5枚目：感情のあり方",
+    "6枚目：遺伝した能力",
+    "7枚目：与えられた知恵",
+    "8枚目：前世のカルマ",
+    "9枚目：運命"
+];
+
+export const Nine = () => {
     const settingContext = useContext(SettingContext);
     const [isFirstRender, setIsFirstRender] = useState(true);
     const [paths, setPaths] = useState<{ [key: string]: string }[]>([]);
@@ -59,7 +81,7 @@ export const Third = () => {
                 array.push(Config.SUN[i]);
             }
             const result = [];
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 9; i++) {
                 const rand = Math.floor(Math.random() * array.length);
                 result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
                 array.splice(rand, 1);
@@ -72,7 +94,7 @@ export const Third = () => {
                 array.push(Config.MOON[i]);
             }
             const result = [];
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 9; i++) {
                 const rand = Math.floor(Math.random() * array.length);
                 result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
                 array.splice(rand, 1);
@@ -84,7 +106,10 @@ export const Third = () => {
         <React.Fragment>
             <section>
                 <div>
-                    <h1 css={TitleCss}>3枚引き</h1>
+                    <h1 css={TitleCss}>9枚引き(スピリチュアルスプレッド)</h1>
+                </div>
+                <div css={viewCss}>
+                    <img css={viewImgCss} src={`./public/img/view/${settingContext?.mode}/9.png`}></img>
                 </div>
             </section>
             <section>
@@ -93,7 +118,7 @@ export const Third = () => {
                         paths.map((p, pi) => {
                             return (
                                 <li key={"li-" + p["path"]} css={cardLiCss}>
-                                    <h3 css={h3Css}>{`${(pi + 1).toString()}枚目`}</h3>
+                                    <h3 css={h3Css}>{titles[pi]}</h3>
                                     <div css={{ width: "auto" }}>
                                         <Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
                                     </div>

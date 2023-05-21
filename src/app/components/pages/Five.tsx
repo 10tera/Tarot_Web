@@ -4,35 +4,52 @@ import { css } from "@emotion/react";
 import React, { useContext, useEffect, useState } from "react";
 import { SettingContext } from "../../context/SettingContext";
 import { Card } from "../molecules/Card";
-import Config from "../../../../public/config.json";
 import { BackButton } from "../molecules/BackButton";
+import Config from "../../../../public/config.json";
 import { OpenNewWindow } from "../molecules/OpenNewWindow";
 
 const TitleCss = css({
     textAlign: "center"
 });
 
+const h3Css = css({
+    textAlign: "center"
+});
+
+const pCss = css({
+    overflowWrap: "break-word",
+    transition: "all 0.6s",
+    whiteSpace: "pre-wrap"
+});
+
 const cardLiCss = css({
     listStyle: "none",
-    width: "31%",
+    width: "100%",
     minWidth: "140px",
     margin: "3.5% 0 0 0",
-    display: "list-item",
-    //position: "relative",
+    height: "auto",
 });
 
 const cardsUlCss = css({
-    paddingTop: "10px",
-    paddingLeft: "10px",
-    height: "auto",
-    display: "flex",
+    height: "100%",
     width: "70%",
-    maxWidth: "600px",
-    //maxHeight: "600px",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    margin: "0 auto 2em",
-    alignItems: "center",
+    margin: "0 15% 0 15%",
+    paddingLeft: "0px"
+});
+
+const buttonsCss = css({
+    textAlign: "center",
+    width: "100%"
+});
+
+const viewCss = css({
+    margin: "0 auto",
+    width: "50%"
+});
+
+const viewImgCss = css({
+    width: "100%",
+    height: "auto"
 });
 
 const titles = [
@@ -62,7 +79,7 @@ export const Five = () => {
             const result = [];
             for (let i = 0; i < 5; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ path: array[rand][0], infoTitle: array[rand][1],info: array[rand][2] });
+                result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -75,7 +92,7 @@ export const Five = () => {
             const result = [];
             for (let i = 0; i < 5; i++) {
                 const rand = Math.floor(Math.random() * array.length);
-                result.push({ path: array[rand][0], infoTitle: array[rand][1],info:array[rand][2] });
+                result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
                 array.splice(rand, 1);
             }
             setPaths([...result]);
@@ -87,19 +104,29 @@ export const Five = () => {
                 <div>
                     <h1 css={TitleCss}>5枚引き(ギリシャ十字)</h1>
                 </div>
+                <div css={viewCss}>
+                    <img css={viewImgCss} src={`./public/img/view/${settingContext?.mode}/5.png`}></img>
+                </div>
             </section>
-            <section css={{ height: "auto" }}>
+            <section>
                 <ul css={cardsUlCss}>
                     {
-                        paths.map((p,pi) => {
+                        paths.map((p, pi) => {
                             return (
-                                <li key={"li-" + p["path"]} css={cardLiCss}><Card infoTitle={p["infoTitle"]} mode={settingContext?.mode ? settingContext.mode : "SUN"} title={titles[pi]} path={p["path"]} info={p["info"]} /></li>
+                                <li key={"li-" + p["path"]} css={cardLiCss}>
+                                    <h3 css={h3Css}>{titles[pi]}</h3>
+                                    <div css={{ width: "auto" }}>
+                                        <Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
+                                    </div>
+                                </li>
                             )
                         })
                     }
                 </ul>
-                <BackButton/>
-                <OpenNewWindow path={`${window.location.pathname}`} />
+                <div css={buttonsCss}>
+                    <BackButton />
+                    <OpenNewWindow path={`${window.location.pathname}`} />
+                </div>
             </section>
         </React.Fragment>
     )
