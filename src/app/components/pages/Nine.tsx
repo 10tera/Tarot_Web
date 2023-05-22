@@ -55,6 +55,10 @@ const viewImgCss = css({
     height: "auto"
 });
 
+const getRandomBool = () => {
+    return Math.random() > 0.5;
+}
+
 const titles = [
     "1枚目：現状",
     "2枚目：身体的な能力",
@@ -123,7 +127,7 @@ export const Nine = () => {
                                 <li key={"li-" + p["path"]} css={cardLiCss}>
                                     <h3 css={h3Css}>{titles[pi]}</h3>
                                     <div css={{ width: "auto" }}>
-                                        <Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
+                                        <Card hanten={getRandomBool()} mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
                                     </div>
                                     <br />
                                 </li>

@@ -44,7 +44,9 @@ const buttonsCss = css({
     padding: "5px"
 });
 
-
+const getRandomBool = () => {
+    return Math.random() > 0.5;
+}
 
 export const One = () => {
     const settingContext = useContext(SettingContext);
@@ -99,7 +101,7 @@ export const One = () => {
                                 <li key={"li-" + p["path"]} css={cardLiCss}>
                                     <h3 css={h3Css}>{`${(pi + 1).toString()}枚目`}</h3>
                                     <div css={{width: "auto"}}>
-                                        <Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
+                                        <Card hanten={getRandomBool()} mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
                                     </div>
                                 </li>
                             )

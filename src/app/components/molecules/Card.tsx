@@ -10,6 +10,11 @@ type Props = {
     info: string,
     infoTitle: string,
     isShowInfo: boolean,
+    hanten: boolean,
+}
+
+const getRandomBool = () => {
+    return Math.random() > 0.5;
 }
 
 
@@ -71,6 +76,55 @@ const defaultBackCss = css({
     transition: "all 0.6s",
 });
 
+const activeFrontCss2 = css({
+    width: "auto",
+    height: "100%",
+    position: "absolute",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
+    backfaceVisibility: "hidden",
+    transition: "all 0.6s",
+    transform: "rotateY(0) scaleY(-1)",
+});
+
+const defaultFrontCss2 = css({
+    width: "auto",
+    height: "100%",
+    position: "absolute",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
+    backfaceVisibility: "hidden",
+    transition: "all 0.6s",
+    transform: "rotateY(-180deg) scaleY(-1)",
+});
+
+const activeBackCss2 = css({
+    width: "auto",
+    height: "100%",
+    position: "absolute",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
+    backfaceVisibility: "hidden",
+    transition: "all 0.6s",
+    transform: "rotateY(180deg) scaleY(-1)",
+});
+
+const defaultBackCss2 = css({
+    width: "auto",
+    height: "100%",
+    position: "absolute",
+    margin: "0 auto",
+    //left: "0",
+    //top: "0",
+    backfaceVisibility: "hidden",
+    transition: "all 0.6s",
+    transform: "scaleY(-1)"
+});
+
+
 const activePCss = css({
     overflowWrap: "break-word",
     transition: "all 0.6s",
@@ -106,7 +160,7 @@ const defaultH3Css = css({
 });
 
 
-export const Card = ({path,mode,info,isShowInfo,infoTitle}: Props) => {
+export const Card = ({path,mode,info,isShowInfo,infoTitle,hanten}: Props) => {
     const [isClick,setIsClick] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const handleCardClick = () => {
@@ -136,12 +190,34 @@ export const Card = ({path,mode,info,isShowInfo,infoTitle}: Props) => {
     return(
         <React.Fragment>
             <div css={CardCss} ref={cardRef}>
-                <div css={isClick ? activeFrontCss : defaultFrontCss}>
-                    <img src={`./public/img/card/${mode}/${path}.png`} css={{height: "100%",margin :"0 auto"}}></img>
-                </div>
-                <div css={isClick ? activeBackCss : defaultBackCss} onClick={handleCardClick}>
-                    <img src={`./public/img/card/${mode}/back.png`} css={{ height: "100%", margin: "0 auto" }}></img>
-                </div>
+                {
+                    (() => {
+                        if(hanten){
+                            return(
+                                <React.Fragment>
+                                    <div css={isClick ? activeFrontCss : defaultFrontCss}>
+                                        <img src={`./public/img/card/${mode}/${path}.png`} css={{ height: "100%", margin: "0 auto" }}></img>
+                                    </div>
+                                    <div css={isClick ? activeBackCss : defaultBackCss} onClick={handleCardClick}>
+                                        <img src={`./public/img/card/${mode}/back.png`} css={{ height: "100%", margin: "0 auto" }}></img>
+                                    </div>
+                                </React.Fragment>
+                            )
+                        }
+                        else{
+                            return(
+                                <React.Fragment>
+                                    <div css={isClick ? activeFrontCss2 : defaultFrontCss2}>
+                                        <img src={`./public/img/card/${mode}/${path}.png`} css={{ height: "100%", margin: "0 auto" }}></img>
+                                    </div>
+                                    <div css={isClick ? activeBackCss2 : defaultBackCss2} onClick={handleCardClick}>
+                                        <img src={`./public/img/card/${mode}/back.png`} css={{ height: "100%", margin: "0 auto" }}></img>
+                                    </div>
+                                </React.Fragment>
+                            )
+                        }
+                    })()
+                }
             </div>
             <h3 css={isClick ? activeH3Css : defaultH3Css}>{infoTitle}</h3>
             {

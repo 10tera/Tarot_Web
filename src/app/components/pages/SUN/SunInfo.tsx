@@ -54,6 +54,8 @@ export const SunInfo = () => {
         if(element){
             element.scrollIntoView();
         }
+
+
     },[]);
     return(
         <React.Fragment>
