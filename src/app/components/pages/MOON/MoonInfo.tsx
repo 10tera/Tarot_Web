@@ -14,12 +14,21 @@ const h3Css = css({
     textAlign: "center"
 });
 const imgDivCss = css({
-    width: "200px",
-    margin: "0 auto"
+    width: "400px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center"
 });
-const imgCss = css({
-    width: "100%",
+const img1Css = css({
+    width: "50%",
     height: "auto",
+    marginRight: "5px"
+});
+
+const img2Css = css({
+    width: "50%",
+    height: "auto",
+    marginLeft: "5px"
 });
 
 const cardInfoCss = css({
@@ -36,6 +45,12 @@ const pCss = css({
     whiteSpace: "pre-wrap"
 });
 
+const infosCss = css({
+    width: "90%",
+    margin: "0 auto",
+});
+
+
 export const MoonInfo = () => {
     const loc = useLocation();
     useEffect(() => {
@@ -51,20 +66,26 @@ export const MoonInfo = () => {
         <React.Fragment>
             <div css={divCss}>
                 <h1 css={h1Css}>猫丸タロットカード「MOON」一覧</h1>
-                {
-                    Config.MOON.map((card, _cardi) => {
-                        return (
-                            <div id={`cardInfo-${card[0]}`} key={`cardInfo-${card[0]}`} css={cardInfoCss}>
-                                <h3 css={h3Css}>{card[1]}</h3>
-                                <div css={imgDivCss}>
-                                    <img css={imgCss} src={`./public/img/card/MOON/${card[0]}.png`}></img>
+                <div css={infosCss}>
+                    {
+                        Config.MOON.map((card, _cardi) => {
+                            if(card[0][card[0].length-1] === "3")return null;
+                            return (
+                                <div id={`cardInfo-${card[0]}`} key={`cardInfo-${card[0]}`} css={cardInfoCss}>
+                                    <div id={`cardInfo-${card[0].slice(0,-1)+"3"}`}/>
+                                    <h3 css={h3Css}>{card[1]}</h3>
+                                    <div css={imgDivCss}>
+                                        <img css={img1Css} src={`./public/img/card/MOON/${card[0]}.png`}></img>
+                                        <img css={img2Css} src={`./public/img/card/MOON/${card[0].slice(0,-1)}3.png`}></img>
+                                    </div>
+                                    <p css={pCss}>{card[2]}</p>
+                                    <p css={pCss}>{card[3]}</p>
+                                    <br/>
                                 </div>
-                                <p css={pCss}>{card[2]}</p>
-                                <p css={pCss}>{card[3]}</p>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
             </div>
         </React.Fragment>
     )

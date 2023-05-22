@@ -30,7 +30,7 @@ const eachSelectCss = css({
     width: "50%",
     alignItems: "center",
     minWidth: "400px",
-    marginTop: "100px"
+    marginTop: "70px"
 });
 
 const h3Css = css({

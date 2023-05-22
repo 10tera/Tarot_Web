@@ -123,6 +123,7 @@ export const Six = () => {
                                     <div css={{ width: "auto" }}>
                                         <Card mode={settingContext?.mode ? settingContext.mode : "SUN"} path={p["path"]} infoTitle={p["infoTitle"]} info={p["info1"]} isShowInfo={true} />
                                     </div>
+                                    <br />
                                 </li>
                             )
                         })
