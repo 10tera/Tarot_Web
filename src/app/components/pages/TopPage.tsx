@@ -63,12 +63,12 @@ export const TopPage = () => {
     return(
         <React.Fragment>
             <div css={TitleCss}>
-                <h1>猫丸タロット占いツールver.1</h1>
+                <h1>ユウト タロット占いツール</h1>
             </div>
             <div css={selectCss}>
                 <div css={eachSelectCss}>
                     <img css={imgCss} onClick={() => { navigate("/info/SUN") }} src={"./public/img/card/SUN/back.png"}></img>
-                    <h3 css={h3Css} onClick={() => {navigate("/info/SUN")}}>猫丸タロットカード「SUN」</h3>
+                    <h3 css={h3Css} onClick={() => {navigate("/info/SUN")}}>ユウトタロットカード「SUN」</h3>
                     <ul css={LinkWrapCss}>
                         <li css={LinkCss}>
                             <Link to={`/one`} onClick={setModeSun}>1枚引き</Link>
@@ -93,7 +93,7 @@ export const TopPage = () => {
                 </div>
                 <div css={eachSelectCss}>
                     <img css={imgCss} onClick={() => { navigate("/info/MOON") }} src={"./public/img/card/MOON/back.png"}></img>
-                    <h3 css={h3Css} onClick={() => { navigate("/info/MOON") }}>猫丸タロットカード「MOON」</h3>
+                    <h3 css={h3Css} onClick={() => { navigate("/info/MOON") }}>ユウトタロットカード「MOON」</h3>
                     <ul css={LinkWrapCss}>
                         <li css={LinkCss}>
                             <Link to={`/one`} onClick={setModeMoon}>1枚引き</Link>
