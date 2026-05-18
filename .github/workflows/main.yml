@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/**'
+      - 'public/**'
 
 jobs:
   build:
@@ -15,21 +18,20 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      
-      - name: filter folder changes
-        id: changes
-        uses: dorny/paths-filter@v3
+
+      - name: setup node
+        uses: actions/setup-node@v4
         with:
-          token: ${{secrets.MY_GITHUB_TOKEN}}
-          filters: |
-            docs: 
-              - "docs/**"
-              - "public/**"
-              - "src/**"
-      
+          node-version: '20'
+          cache: 'npm'
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: build
+        run: npm run build:prod
+
       - name: upload to github pages
-        id: upload
-        if: steps.changes.outputs.docs == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
@@ -37,27 +39,14 @@ jobs:
   deploy:
     needs: build
     permissions:
-       pages: write
-       id-token: write
-       contents: read
+      pages: write
+      id-token: write
+      contents: read
     environment:
-       name: github-pages
-       url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: filter
-        id: changes
-        uses: dorny/paths-filter@v3
-        with:
-          token: ${{secrets.MY_GITHUB_TOKEN}}
-          filters: |
-            docs: 
-              - "docs/**"
-              - "public/**"
-              - "src/**"
       - name: Deploy to GitHub Pages
-        if: steps.changes.outputs.docs == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
