@@ -81,6 +81,7 @@ export const MoonInfo = () => {
                                         <img css={img2Css} src={`./public/img/card/MOON/${key3}.png`}></img>
                                     </div>
                                     <p css={pCss}>{`【正位置の場合】\n${info.upright}`}</p>
+                                    <br/>
                                     <p css={pCss}>{`【逆位置の場合】\n${info.reversed}`}</p>
                                     <br/>
                                 </div>

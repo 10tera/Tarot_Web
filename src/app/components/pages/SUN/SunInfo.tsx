@@ -72,6 +72,7 @@ export const SunInfo = () => {
                                         <img css={imgCss} src={`./public/img/card/SUN/${item.key}.png`}></img>
                                     </div>
                                     <p css={pCss}>{`【正位置の場合】\n${info.upright}`}</p>
+                                    <br/>
                                     <p css={pCss}>{`【逆位置の場合】\n${info.reversed}`}</p>
                                     <br/>
                                 </div>

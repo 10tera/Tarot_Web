@@ -1,6 +1,6 @@
 export const cardInfo = {
     fool: {
-        title: "0.愚者 - 出会い・冒険・自由",
+        title: "0. The Fool（愚者）",
         upright: `基本的な意味:
 無邪気さ、自由、冒険、新しい始まり、可能性、リスクを恐れない
 
@@ -31,7 +31,7 @@ export const cardInfo = {
 現実を直視する、計画を立てる、リスクを考慮する、責任感を持つ。`
     },
     magician: {
-        title: "1. 魔術師 - 選択・創造・意思",
+        title: "1. The Magician（魔術師）",
         upright: `基本的な意味:
 行動力、創造性、クリエイティブ、ひらめき、美意識、コミュニケーション能力、才能、意志の力、実現力を発揮する
 
@@ -62,7 +62,7 @@ export const cardInfo = {
 スキルを磨く、誠実な態度で臨む、言葉だけでなく行動で示す。`
     },
     priestess: {
-        title: "2. 女教皇 - 知性・直感・神秘性",
+        title: "2. The High Priestess（女教皇）",
         upright: `基本的な意味:
 直感、潜在意識、神秘、知性、冷静さ、受容性
 
@@ -93,7 +93,7 @@ export const cardInfo = {
 感情を表現する、相手を信頼する、情報を集める、直感に頼りすぎない。`
     },
     empress: {
-        title: "3. 女帝 - 母性・豊穣・安定",
+        title: "3. The Empress（女帝）",
         upright: `基本的な意味:
 愛情、豊穣、母性、美、創造性、繁栄
 
@@ -155,7 +155,7 @@ export const cardInfo = {
 柔軟性を持つ、相手の意見を聞く、感情を理解する、協調性を意識する。`
     },
     hierophant: {
-        title: "5. 教皇 - 信仰・従順・伝統",
+        title: "5. The Hierophant（教皇・法王）",
         upright: `基本的な意味:
 伝統、道徳、社会性、教育、信仰、助言
 
@@ -186,7 +186,7 @@ export const cardInfo = {
 柔軟な考えを持つ、新しい価値観を受け入れる、形式に囚われすぎない。`
     },
     lovers: {
-        title: "6. 恋人たち - 相互愛、運命の出会い、選択",
+        title: "6. The Lovers（恋人）",
         upright: `基本的な意味:
 愛、調和、選択、パートナーシップ、決断、誘惑
 
@@ -217,7 +217,7 @@ export const cardInfo = {
 誠実な態度で臨む、倫理観を持つ、誘惑に打ち勝つ、責任感を持つ。`
     },
     chariot: {
-        title: "7. 戦車 - 勝利・進軍・エネルギー",
+        title: "7. The Chariot（戦車）",
         upright: `基本的な意味:
 勝利、成功、意志力、自制心、目標達成、前進
 
@@ -279,7 +279,7 @@ export const cardInfo = {
 自信を持つ、困難に立ち向かう勇気を持つ、精神的な強さを養う。`
     },
     hermit: {
-        title: "9. 隠者 - 孤独・探求・自己発見",
+        title: "9. The Hermit（隠者）",
         upright: `基本的な意味:
 内省、孤独、探求、知識、知恵、導き
 
@@ -310,7 +310,7 @@ export const cardInfo = {
 積極的に行動する、コミュニケーションを大切にする、周囲との協調性を意識する。`
     },
     fortune: {
-        title: "10. 運命の輪 - 運命・変化・進展",
+        title: "10. Wheel of Fortune（運命の輪）",
         upright: `基本的な意味:
 運命、変化、転換期、チャンス、好機、サイクル
 
@@ -341,7 +341,7 @@ export const cardInfo = {
 状況を受け入れる、変化に対応する、チャンスを逃さないようにする。`
     },
     justice: {
-        title: "11. 正義 - 公正・バランス・誠実さ",
+        title: "11. Justice（正義）(マルセイユ版は8)",
         upright: `基本的な意味:
 公正、正義、真実、バランス、調和、責任、因果応報
 
@@ -372,7 +372,7 @@ export const cardInfo = {
 公平な判断をする、誠実な態度で臨む、感情的な偏りをなくす。`
     },
     hangedMan: {
-        title: "12. 吊るされた男 - 犠牲・反省・試練",
+        title: "12. The Hanged Man（吊るされた男）",
         upright: `基本的な意味:
 犠牲、忍耐、試練、自己犠牲、手放し、新しい視点、停滞
 
@@ -403,7 +403,7 @@ export const cardInfo = {
 状況を打破する、新しい視点を持つ、自己犠牲をしない。`
     },
     death: {
-        title: "13. 死神 - 変革・終末・新生",
+        title: "13. Death（死神）",
         upright: `基本的な意味:
 終わり、変化、変容、終焉、再生、解放、手放し
 
@@ -434,7 +434,7 @@ export const cardInfo = {
 過去に執着しない、変化を受け入れる、新しい始まりに備える。`
     },
     temperance: {
-        title: "14. 節制 - 調和・中道・自制",
+        title: "14. Temperance（節制）",
         upright: `基本的な意味:
 調和、バランス、忍耐、自制心、協調性、融合、調整
 
@@ -465,7 +465,7 @@ export const cardInfo = {
 バランスを保つ、コミュニケーションを大切にする、協調性を意識する。`
     },
     devil: {
-        title: "15. 悪魔 - 誘惑・束縛・魅力",
+        title: "15. The Devil（悪魔）",
         upright: `基本的な意味:
 誘惑、執着、依存、束縛、欲望、物質主義、自己中心的
 
@@ -496,7 +496,7 @@ export const cardInfo = {
 誘惑に打ち勝つ、依存から脱却する、自制心を養う。`
     },
     tower: {
-        title: "16. 塔 - 破滅・絶望・再生",
+        title: "16. The Tower（塔）",
         upright: `基本的な意味:
 崩壊、破壊、破滅、災難、突然の変化、解放、覚醒
 
@@ -527,7 +527,7 @@ export const cardInfo = {
 冷静さを保つ、状況を受け入れる、再建に向けて努力する。`
     },
     star: {
-        title: "17. 星 - 希望・可能性・目標",
+        title: "17. The Star（星）",
         upright: `基本的な意味:
 希望、インスピレーション、癒し、導き、才能、可能性、楽観
 
@@ -558,7 +558,7 @@ export const cardInfo = {
 希望を持つ、目標を再確認する、自信を取り戻す。`
     },
     moon: {
-        title: "18. 月 - 感情・幻惑・不確実",
+        title: "18. The Moon（月）",
         upright: `基本的な意味:
 不安、恐れ、潜在意識、幻想、秘密、曖昧さ、混乱
 
@@ -589,7 +589,7 @@ export const cardInfo = {
 真実を見抜く、直感を信じすぎない、事実を確認する、冷静な判断を心がける。`
     },
     sun: {
-        title: "19. 太陽 - 明るさ・幸福・成功",
+        title: "19. The Sun（太陽）",
         upright: `基本的な意味:
 成功、幸福、喜び、活力、自信、達成、輝き
 
@@ -620,7 +620,7 @@ export const cardInfo = {
 ポジティブ思考を心がける、自分を信じる、積極的に行動する。`
     },
     judgement: {
-        title: "20. 審判 - 復活・判断・転換",
+        title: "20. Judgement（審判）",
         upright: `基本的な意味:
 復活、再生、目覚め、評価、再評価、転換期、決断
 
@@ -651,7 +651,7 @@ export const cardInfo = {
 過去を受け入れる、反省する、新しい視点を持つ。`
     },
     world: {
-        title: "21. 世界 - 完成・達成・新たな始まり",
+        title: "21. The World（世界）",
         upright: `基本的な意味:
 完成、達成、統合、調和、成功、幸福、到達点
 
