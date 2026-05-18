@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { SettingContext } from "../../context/SettingContext";
 import { Card } from "../molecules/Card";
 import { BackButton } from "../molecules/BackButton";
-import Config from "../../../../public/config.json";
+import { pickCards, CardResult, Mode } from "../../utils/pickCards";
 import { OpenNewWindow } from "../molecules/OpenNewWindow";
 
 const TitleCss = css({
@@ -74,7 +74,7 @@ const titles = [
 export const Nine = () => {
     const settingContext = useContext(SettingContext);
     const [isFirstRender, setIsFirstRender] = useState(true);
-    const [paths, setPaths] = useState<{ [key: string]: string }[]>([]);
+    const [paths, setPaths] = useState<CardResult[]>([]);
     useEffect(() => {
         if (!isFirstRender) return;
         setIsFirstRender(false);
@@ -82,32 +82,7 @@ export const Nine = () => {
         if (!mode) {
             return;
         }
-        if (mode === "SUN") {
-            const array: string[][] = [];
-            for (let i = 0; i < Config.SUN.length; i++) {
-                array.push(Config.SUN[i]);
-            }
-            const result = [];
-            for (let i = 0; i < 9; i++) {
-                const rand = Math.floor(Math.random() * array.length);
-                result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
-                array.splice(rand, 1);
-            }
-            setPaths([...result]);
-        }
-        else if (mode === "MOON") {
-            const array: string[][] = [];
-            for (let i = 0; i < Config.MOON.length; i++) {
-                array.push(Config.MOON[i]);
-            }
-            const result = [];
-            for (let i = 0; i < 9; i++) {
-                const rand = Math.floor(Math.random() * array.length);
-                result.push({ path: array[rand][0], infoTitle: array[rand][1], info1: array[rand][2], info2: array[rand][3] });
-                array.splice(rand, 1);
-            }
-            setPaths([...result]);
-        }
+        setPaths(pickCards(mode, 9));
     }, []);
     return (
         <React.Fragment>

@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import React,{useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-import Config from "../../../../../public/config.json";
+import { moonConfig, cardInfo } from "../../../constants/config";
 
 const h1Css = css({
     textAlign: "center"
@@ -65,21 +65,23 @@ export const MoonInfo = () => {
     return(
         <React.Fragment>
             <div css={divCss}>
-                <h1 css={h1Css}>猫丸タロットカード「MOON」一覧</h1>
+                <h1 css={h1Css}>ユウトタロットカード「MOON」一覧</h1>
                 <div css={infosCss}>
                     {
-                        Config.MOON.map((card, _cardi) => {
-                            if(card[0][card[0].length-1] === "3")return null;
+                        moonConfig.map((item) => {
+                            if (item.key.endsWith("3")) return null;
+                            const info = cardInfo[item.infoKey];
+                            const key3 = item.key.slice(0, -1) + "3";
                             return (
-                                <div id={`cardInfo-${card[0]}`} key={`cardInfo-${card[0]}`} css={cardInfoCss}>
-                                    <div id={`cardInfo-${card[0].slice(0,-1)+"3"}`}/>
-                                    <h3 css={h3Css}>{card[1]}</h3>
+                                <div id={`cardInfo-${item.key}`} key={`cardInfo-${item.key}`} css={cardInfoCss}>
+                                    <div id={`cardInfo-${key3}`}/>
+                                    <h3 css={h3Css}>{info.title}</h3>
                                     <div css={imgDivCss}>
-                                        <img css={img1Css} src={`./public/img/card/MOON/${card[0]}.png`}></img>
-                                        <img css={img2Css} src={`./public/img/card/MOON/${card[0].slice(0,-1)}3.png`}></img>
+                                        <img css={img1Css} src={`./public/img/card/MOON/${item.key}.png`}></img>
+                                        <img css={img2Css} src={`./public/img/card/MOON/${key3}.png`}></img>
                                     </div>
-                                    <p css={pCss}>{card[2]}</p>
-                                    <p css={pCss}>{card[3]}</p>
+                                    <p css={pCss}>{`【正位置の場合】\n${info.upright}`}</p>
+                                    <p css={pCss}>{`【逆位置の場合】\n${info.reversed}`}</p>
                                     <br/>
                                 </div>
                             )

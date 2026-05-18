@@ -3,7 +3,6 @@
 import { css } from "@emotion/react";
 import React,{useContext} from "react";
 import { Link,useNavigate } from "react-router-dom";
-import { ModeSelect } from "../molecules/ModeSelect";
 import { SettingContext } from "../../context/SettingContext";
 
 const LinkCss = css({
@@ -51,9 +50,6 @@ const spanCss = css({
 export const TopPage = () => {
     const settingContext = useContext(SettingContext);
     const navigate = useNavigate();
-    const setMode = (mode:string) => {
-        settingContext?.setMode(mode);
-    }
     const setModeSun = () => {
         settingContext?.setMode("SUN");
     }

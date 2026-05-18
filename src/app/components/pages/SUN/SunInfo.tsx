@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 /** @jsx jsx */
 import { css } from "@emotion/react";
-import React,{useEffect,useRef} from "react";
+import React,{useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-import Config from "../../../../../public/config.json";
+import { sunConfig, cardInfo } from "../../../constants/config";
 
 const h1Css = css({
     textAlign: "center",
@@ -60,18 +60,19 @@ export const SunInfo = () => {
     return(
         <React.Fragment>
             <div css={divCss}>
-                <h1 css={h1Css}>猫丸タロットカード「SUN」一覧</h1>
+                <h1 css={h1Css}>ユウトタロットカード「SUN」一覧</h1>
                 <div css={infosCss}>
                     {
-                        Config.SUN.map((card, _cardi) => {
+                        sunConfig.map((item) => {
+                            const info = cardInfo[item.infoKey];
                             return (
-                                <div id={`cardInfo-${card[0]}`} key={`cardInfo-${card[0]}`} css={cardInfoCss}>
-                                    <h3 css={h3Css}>{card[1]}</h3>
+                                <div id={`cardInfo-${item.key}`} key={`cardInfo-${item.key}`} css={cardInfoCss}>
+                                    <h3 css={h3Css}>{info.title}</h3>
                                     <div css={imgDivCss}>
-                                        <img css={imgCss} src={`./public/img/card/SUN/${card[0]}.png`}></img>
+                                        <img css={imgCss} src={`./public/img/card/SUN/${item.key}.png`}></img>
                                     </div>
-                                    <p css={pCss}>{`【正位置の場合】\n${card[2]}`}</p>
-                                    <p css={pCss}>{`【逆位置の場合】\n${card[3]}`}</p>
+                                    <p css={pCss}>{`【正位置の場合】\n${info.upright}`}</p>
+                                    <p css={pCss}>{`【逆位置の場合】\n${info.reversed}`}</p>
                                     <br/>
                                 </div>
                             )
