@@ -70,8 +70,8 @@ export const SunInfo = () => {
                                     <div css={imgDivCss}>
                                         <img css={imgCss} src={`./public/img/card/SUN/${card[0]}.png`}></img>
                                     </div>
-                                    <p css={pCss}>{card[2]}</p>
-                                    <p css={pCss}>{card[3]}</p>
+                                    <p css={pCss}>{`【正位置の場合】\n${card[2]}`}</p>
+                                    <p css={pCss}>{`【逆位置の場合】\n${card[3]}`}</p>
                                     <br/>
                                 </div>
                             )
