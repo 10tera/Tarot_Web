@@ -25,6 +25,7 @@ jobs:
             docs: 
               - "docs/**"
               - "public/**"
+              - "src/**"
       
       - name: upload to github pages
         id: upload
@@ -55,6 +56,7 @@ jobs:
             docs: 
               - "docs/**"
               - "public/**"
+              - "src/**"
       - name: Deploy to GitHub Pages
         if: steps.changes.outputs.docs == 'true'
         id: deployment

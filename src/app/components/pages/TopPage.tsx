@@ -58,7 +58,6 @@ export const TopPage = () => {
     }
     return(
         <React.Fragment>
-            あああ
             <div css={TitleCss}>
                 <h1>ユウト タロット占いツール</h1>
             </div>
