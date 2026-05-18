@@ -14,11 +14,11 @@ jobs:
       id-token: write
     steps:
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       
       - name: filter folder changes
         id: changes
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           token: ${{secrets.MY_GITHUB_TOKEN}}
           filters: |
@@ -29,7 +29,7 @@ jobs:
       - name: upload to github pages
         id: upload
         if: steps.changes.outputs.docs == 'true'
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
@@ -45,10 +45,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: filter
         id: changes
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           token: ${{secrets.MY_GITHUB_TOKEN}}
           filters: |
@@ -58,4 +58,4 @@ jobs:
       - name: Deploy to GitHub Pages
         if: steps.changes.outputs.docs == 'true'
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
